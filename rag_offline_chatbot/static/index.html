@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Mental Health Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body class="auth-mode"><!-- auth-mode: header hidden while on auth screen -->
+  <div class="background"></div>
+
+  <div class="app">
+    <!-- AUTH PANEL -->
+    <div id="auth-panel" class="auth-panel">
+      <h2>Login to Continue</h2>
+      <p class="auth-subtitle">Please log in or create an account to start chatting.</p>
+      <input id="username" placeholder="Username" autocomplete="username" />
+      <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+      <div class="auth-buttons">
+        <button id="login-btn">Login</button>
+        <button id="register-btn">Register</button>
+      </div>
+      <div id="auth-error" class="auth-error"></div>
+      <p class="back-link"><a href="/">← Back to BloomSpace</a></p>
+    </div>
+
+    <!-- ONBOARDING -->
+    <div id="onboard" class="onboard hidden">
+      <h2>🧠 Welcome</h2>
+      <p>I’m here to support you. This space is safe, private, and always open for you.</p>
+      <button id="startChat">Start Chat</button>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header hidden">
+      <div>
+        <h2>💙 Mental Health Support</h2>
+        <p class="subtitle">Always here to listen.</p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" title="Toggle theme">🌓</button>
+        <button id="logoutBtn" class="logout-btn" title="Logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- CHAT MESSAGES -->
+    <div id="chat" class="chatbox hidden" aria-live="polite"></div>
+
+    <!-- INPUT CONTROLS -->
+    <div class="controls hidden">
+      <textarea id="msg" placeholder="Type how you're feeling…"></textarea>
+      <button id="mic" class="circle-btn" title="Voice input">🎤</button>
+      <button id="send" class="send-btn" title="Send message">➤</button>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

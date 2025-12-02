@@ -1,0 +1,404 @@
+<!-- =========================
+     File: static/htweb.html
+     ========================= -->
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BloomSpace — Wellness & Self-Help</title>
+  <meta name="description" content="A playful, gentle place for mindfulness, journaling, and growth." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/stweb.css" />
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🌸</div>
+      <div><h1>BloomSpace</h1><p class="tag">A playful, gentle place for mindfulness & growth</p></div>
+    </div>
+    <nav class="nav" id="main-nav" aria-label="Primary navigation">
+      <a href="#meditation">Meditation</a>
+      <a href="#journaling">Journaling</a>
+      <a href="#insights">Insights</a>
+      <a href="#yoga">Yoga</a>
+      <a href="#motivation">Motivation</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    <div class="header-cta">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌓</button>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" id="nav-toggle">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero slideshow -->
+  <section class="hero">
+    <div class="slideshow" id="slideshow" aria-roledescription="carousel" aria-label="Highlights">
+      <div class="slide active" data-bg="1">
+        <div class="slide-content">
+          <h2>Start Small. Breathe Deeply.</h2>
+          <p>3–10 minute guided meditations to reset your day.</p>
+          <a class="cta" href="#meditation" data-selfcare="meditation">Explore Meditations</a>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <svg viewBox="0 0 240 240" width="220" height="180">
+            <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#ffd7e2"/><stop offset="1" stop-color="#cfe6ff"/></linearGradient></defs>
+            <rect rx="22" width="240" height="240" fill="url(#g2)"/>
+            <g transform="translate(30,40)"><ellipse cx="60" cy="120" rx="60" ry="20" fill="#fff3"/><circle cx="60" cy="60" r="36" fill="#fff"/><path d="M30 110 q30 -50 60 0" fill="#fff7"/></g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="slide" data-bg="2">
+        <div class="slide-content">
+          <h2>Write to Understand Yourself</h2>
+          <p>Daily prompts, tags, autosave, and export — your gentle notebook.</p>
+          <a class="cta" href="#journaling" data-selfcare="journaling">Start Journaling</a>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <svg viewBox="0 0 240 240" width="220" height="180">
+            <rect rx="18" width="240" height="240" fill="#fff8e6"/>
+            <g><rect x="24" y="36" width="192" height="168" rx="12" fill="#fff"/>
+              <path d="M36 60 h168" stroke="#ffd1dc" stroke-width="4"/>
+              <circle cx="60" cy="90" r="6" fill="#ffd1dc"/><circle cx="60" cy="112" r="6" fill="#c7d2fe"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="slide" data-bg="3">
+        <div class="slide-content">
+          <h2>Move Gently. Feel Better.</h2>
+          <p>Short yoga flows for energy, calm, and flexibility.</p>
+          <a class="cta" href="#yoga" data-selfcare="yoga">Try Gentle Yoga</a>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <svg viewBox="0 0 240 240" width="220" height="180">
+            <rect rx="18" width="240" height="240" fill="#e8f6ff"/>
+            <g transform="translate(40,30)"><circle cx="60" cy="60" r="28" fill="#fff"/><path d="M20 140 q40 -90 80 0" fill="#fff7"/></g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="slide" data-bg="4">
+        <div class="slide-content">
+          <h2>Find Your Focus</h2>
+          <p>Pomodoro timer with gentle alerts and session history.</p>
+          <a class="cta" href="#motivation">Open Focus Timer</a>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <svg viewBox="0 0 240 240" width="220" height="180">
+            <rect rx="18" width="240" height="240" fill="#f3e8ff"/>
+            <g transform="translate(20,20)"><circle cx="100" cy="100" r="70" fill="#fff"/>
+              <path d="M100 40 v64 l36 20" stroke="#a78bfa" stroke-width="8" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="visually-hidden" aria-live="polite" id="slide-status"></div>
+    </div>
+
+    <div class="slideshow-controls">
+      <button class="slide-btn" id="prev" aria-label="Previous slide">◀</button>
+      <div class="slideshow-meta">
+        <div id="dots" class="dots" aria-label="Choose slide"></div>
+        <div class="progressbar" aria-hidden="true"><span id="slide-progress"></span></div>
+        <div id="slide-counter" class="slide-counter"></div>
+      </div>
+      <button class="slide-btn" id="next" aria-label="Next slide">▶</button>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section gentle-banner"><p id="gentle-reminder"></p></section>
+
+    <section id="meditation" class="section card-list reveal">
+      <h2>🧘 Meditation — Practices & Sessions</h2>
+      <p class="lead">Short guided meditations to calm your nervous system, build focus, and reduce stress.</p>
+      <div class="cards">
+        <article class="card reveal-item"><h3>5-minute Reset</h3><p>Quick breath + body scan.</p><ul><li>Breathing 1:1</li><li>Body scan</li><li>Grounding</li></ul></article>
+        <article class="card reveal-item"><h3>10-minute Sleep Wind-Down</h3><p>Guided imagery for pre-sleep.</p><ul><li>Progressive relaxation</li><li>Counting breaths</li></ul></article>
+        <article class="card reveal-item"><h3>Focus Booster</h3><p>Brief attention training for study/work.</p><ul><li>Box breathing</li><li>One-point focus</li></ul></article>
+      </div>
+
+      <!-- Breathing Coach -->
+      <div class="breathing-widget">
+        <div>
+          <h3>Breathing Coach</h3>
+          <p class="lead" style="margin:.25rem 0 .5rem">
+            Intentional breathing helps regulate your autonomic nervous system, reduces cortisol,
+            and activates the parasympathetic “rest &amp; digest” response — a quick way to soften stress and steady attention.
+          </p>
+          <div class="breath-controls">
+            <label><span class="visually-hidden">Pattern</span>
+              <select id="breath-pattern" aria-label="Breathing pattern">
+                <option value="4-7-8" selected>4-7-8 (sleep/relax)</option>
+                <option value="4-4-4-4">Box 4-4-4-4 (focus/calm)</option>
+                <option value="5-5">Coherent 5-5 (balance/meditation)</option>
+              </select>
+            </label>
+            <label><span class="visually-hidden">Minutes</span><input id="breath-mins" type="number" min="1" max="20" value="3" aria-label="Minutes" /></label>
+            <button id="breath-start" data-selfcare="breathing">Start</button>
+            <button id="breath-reset" class="btn" type="button">Reset</button>
+            <label class="voice-toggle" title="Voice guidance uses your system voice"><input type="checkbox" id="breath-voice" /> Voice</label>
+          </div>
+          <div class="breath-instruction" id="breath-instruction">Tap start when you’re ready.</div>
+
+          <details style="margin-top:.5rem">
+            <summary><strong>Technique details</strong></summary>
+            <ul style="margin:.5rem 0 0 .9rem">
+              <li><b>4-7-8</b>: Short inhale, longer hold, slow exhale — downshifts arousal for winding down or sleep.</li>
+              <li><b>Box 4-4-4-4</b>: Even phases — useful for focus under pressure and steadying pace.</li>
+              <li><b>Coherent 5-5</b>: Smooth cadence — supports heart-breath coherence and balanced attention.</li>
+            </ul>
+          </details>
+        </div>
+        <div class="breath-bubble-wrap"><div class="breath-bubble" id="breath-bubble" aria-hidden="true"></div></div>
+      </div>
+    </section>
+
+    <!-- Journaling -->
+    <section id="journaling" class="section reveal">
+      <h2>✍️ Journaling — Prompts & Scrapbook</h2>
+      <p class="lead">Autosave, tags, export, and creative prompts that appear as you write. Firestore is used when configured.</p>
+
+      <div class="journal">
+        <aside class="journal-sidebar" aria-label="Journal entries">
+          <div class="journal-search">
+            <input id="jrnl-search" type="search" placeholder="Search title/text ( / )" aria-label="Search journal" />
+            <select id="jrnl-filter" aria-label="Filter by mood">
+              <option value="">All moods</option>
+              <option value="low">😔 low</option>
+              <option value="meh">😕 meh</option>
+              <option value="ok">🙂 ok</option>
+              <option value="good">😊 good</option>
+              <option value="great">🌟 great</option>
+            </select>
+          </div>
+          <div class="journal-actions">
+            <button class="btn primary" id="newEntry" title="J">New</button>
+            <button class="btn" id="saveEntry">Save</button>
+            <button class="btn" id="exportTxt">Export .txt</button>
+            <button class="btn" id="exportJson">Export .json</button>
+            <label class="btn" for="importJson">Import<input id="importJson" type="file" accept="application/json" class="visually-hidden"></label>
+          </div>
+          <div class="entry-list" id="entry-list"></div>
+        </aside>
+
+        <div class="journal-editor">
+          <div class="row">
+            <input id="journalTitle" type="text" placeholder="Title" aria-label="Journal title" />
+            <select id="journalMood" aria-label="Mood">
+              <option value="">Mood</option><option value="low">😔 low</option><option value="meh">😕 meh</option>
+              <option value="ok">🙂 ok</option><option value="good">😊 good</option><option value="great">🌟 great</option>
+            </select>
+            <input id="journalTags" type="text" placeholder="tags, comma separated" aria-label="Tags"/>
+          </div>
+          <textarea id="journalText" class="editor-text" placeholder="Write freely here..."></textarea>
+
+          <!-- Creative Prompts -->
+          <div id="jrnl-prompts-panel" class="prompts hidden">
+            <div class="prompts-head">
+              <strong>Creative Prompts</strong>
+              <div class="prompts-actions">
+                <button id="jrnl-regenerate" class="btn">Refresh</button>
+              </div>
+            </div>
+            <ul id="jrnl-prompts" class="prompts-list"></ul>
+          </div>
+
+          <div class="row row-meta">
+            <div class="stats" id="jrnl-stats">0 words • 0 chars</div>
+            <div class="stats" id="jrnl-status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stickers" aria-hidden="true"><div class="sticker">🌿</div><div class="sticker">✨</div><div class="sticker">🦋</div><div class="sticker">📸</div></div>
+    </section>
+
+    <!-- Insight Flashcards -->
+    <section id="insights" class="section reveal">
+      <h2>🧠 Insight Flashcards</h2>
+      <p class="lead">One quick, grounded insight at a time — psychology, nature & travel, literature & culture, music, and games.</p>
+      <div class="insight-card">
+        <div class="insight-head">
+          <span id="insight-tag" class="insight-tag">Psychology</span>
+          <div class="insight-controls">
+            <select id="insight-select" aria-label="Choose category">
+              <option>Psychology</option>
+              <option>Nature & Travel</option>
+              <option>Literature & Culture</option>
+              <option>Music</option>
+              <option>Games</option>
+            </select>
+            <button id="insight-refresh" class="btn primary">Get New Insight</button>
+          </div>
+        </div>
+        <img id="insight-img" class="insight-img" src="" alt="Insight image" loading="lazy">
+        <div id="insight-text" class="insight-text">Tap “Get New Insight” to begin.</div>
+        <div class="insight-note">Uses Gemini with Google Search grounding when an API key is configured.</div>
+      </div>
+    </section>
+
+    <!-- Yoga -->
+    <section id="yoga" class="section card-list reveal">
+      <h2>🧘‍♀️ Yoga — Gentle Flows</h2>
+      <p class="lead">Short, beginner-friendly flows you can do at home.</p>
+      <div class="cards">
+        <article class="card reveal-item"><h3>Morning Wake-Up Flow</h3><p>Cat-cow, sun breath, gentle lunges.</p><ol><li>Cat-Cow × 8</li><li>Sun Breaths × 5</li><li>Lunges × 6/side</li></ol></article>
+        <article class="card reveal-item"><h3>Lunch Break Stretch</h3><p>Reverse sitting posture with spine + hamstrings.</p></article>
+        <article class="card reveal-item"><h3>Evening Unwind</h3><p>Forward folds & restorative poses for rest.</p></article>
+      </div>
+    </section>
+
+    <!-- Motivation -->
+    <section id="motivation" class="section reveal">
+      <h2>🌟 Motivation & Daily Habits</h2>
+      <p class="lead">Small habits to build consistency.</p>
+
+      <div class="mood-check">
+        <span class="mood-label">How are you feeling today?</span>
+        <div class="mood-options">
+          <button type="button" data-mood="low" title="low">😔</button>
+          <button type="button" data-mood="meh" title="meh">😕</button>
+          <button type="button" data-mood="ok" title="ok">🙂</button>
+          <button type="button" data-mood="good" title="good">😊</button>
+          <button type="button" data-mood="great" title="great">🌟</button>
+        </div>
+        <div id="mood-message" class="mood-message"></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel reveal-item">
+          <h3>Daily Micro-Habits</h3>
+          <ul><li>1-minute tidy</li><li>Drink water on waking</li><li>Two-minute breathing</li></ul>
+        </div>
+        <div class="panel reveal-item">
+          <h3>Affirmations</h3>
+          <p>“I am learning. I am enough. I am allowed to rest.”</p>
+          <button id="affBtn" data-selfcare="affirmation">Generate Affirmation</button>
+          <div id="affirmation" class="aff"></div>
+        </div>
+      </div>
+
+      <div class="timer">
+        <h3>Focus Timer (Pomodoro)</h3>
+        <div class="timer-display" id="tmr-display">25:00</div>
+        <div class="timer-controls">
+          <button class="btn primary" id="tmr-start">Start</button>
+          <button class="btn" id="tmr-pause">Pause</button>
+          <button class="btn" id="tmr-reset">Reset</button>
+          <select id="tmr-preset" aria-label="Preset">
+            <option value="25-5" selected>25/5</option>
+            <option value="50-10">50/10</option>
+            <option value="90-20">90/20</option>
+          </select>
+          <label>Focus <input id="tmr-focus" type="number" min="1" max="180" value="25" style="width:70px"> min</label>
+          <label>Break <input id="tmr-break" type="number" min="1" max="60" value="5" style="width:70px"> min</label>
+        </div>
+      </div>
+
+      <div class="progress-garden">
+        <h3>Your Bloom Garden</h3>
+        <p id="garden-text"></p>
+        <div class="garden-plants" id="garden-plants"></div>
+      </div>
+    </section>
+
+    <section id="resources" class="section reveal">
+      <h2>🔗 Resources</h2>
+      <p class="lead">Quick links, helplines, and recommended reads. BloomSpace is not a crisis service.</p>
+      <div class="resources-grid" id="resources-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      Made with care • BloomSpace — Not a substitute for professional help.
+      If you feel at risk of harming yourself or others, contact emergency services or a trusted professional immediately.
+    </div>
+  </footer>
+
+  <!-- Calm player -->
+  <div class="calm-player" id="calm-player" role="region" aria-label="Calm Corner player">
+    <div class="calm-header"><span>Calm Corner</span><small>Soft ambient sounds</small></div>
+    <div class="calm-body">
+      <select id="calm-select" aria-label="Choose a calm sound">
+        <option value="rain">Rain on Window</option>
+        <option value="piano">Soft Pad</option>
+        <option value="lofi">Lo-fi Focus</option>
+        <option value="forest">Forest Birds</option>
+        <option value="ocean">Ocean Waves</option>
+      </select>
+      <input id="calm-volume" type="range" min="0" max="1" step="0.01" value="0.7" aria-label="Volume">
+      <button id="calm-mute" type="button" aria-pressed="false">Mute</button>
+      <button id="calm-toggle" type="button">Play</button>
+    </div>
+  </div>
+  <audio id="calm-audio" preload="none" loop crossorigin="anonymous"></audio>
+
+  <!-- ✅ Your chatbot launcher (bottom-right). Opens /chat-page. -->
+  <a href="/chat-page" id="chat-toggle" class="chat-toggle" aria-label="Open Chatbot" title="Open Chatbot">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4.5 3.5A1 1 0 0 1 3 20v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
+    <span class="chat-label">Chat</span>
+  </a>
+
+  <!-- Toast + Modal + SOS overlay -->
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <div id="modal-bg" class="modal-bg" aria-hidden="true">
+    <div class="modal">
+      <h3 id="modal-title">Confirm</h3>
+      <p id="modal-body" class="sos-note"></p>
+      <div class="modal-actions">
+        <button id="modal-cancel" class="btn">Cancel</button>
+        <button id="modal-ok" class="btn primary">OK</button>
+      </div>
+    </div>
+  </div>
+  <button id="sos-button" class="sos-button" aria-label="Open SOS and Help">🆘</button>
+  <div id="sos-overlay" class="sos-overlay" aria-hidden="true">
+    <div class="sos-backdrop"></div>
+    <div class="sos-panel" role="dialog" aria-modal="true" aria-labelledby="sos-title">
+      <header class="sos-header">
+        <h2 id="sos-title">SOS & Help</h2>
+        <button class="sos-close" type="button" aria-label="Close SOS">✕</button>
+      </header>
+      <section class="sos-section danger">
+        <h3>Immediate Danger</h3>
+        <p>If you are in immediate danger or feel unsafe, please contact your local emergency services right now.</p>
+        <p class="sos-highlight">In India, call <strong>112</strong> for emergencies.</p>
+      </section>
+      <section class="sos-section">
+        <h3>Talk to Someone</h3>
+        <ul class="sos-list">
+          <li><strong>Trusted person:</strong> Call a close friend or family member.</li>
+          <li><strong>Mental health professional:</strong> Your local counselor, therapist, or doctor.</li>
+          <li><strong>Helplines:</strong> See the Resources section for India-wide and global support.</li>
+        </ul>
+        <p class="sos-note">These services are outside BloomSpace. We do not monitor or store your calls.</p>
+      </section>
+      <section class="sos-section">
+        <h3>Grounding Tools (Do This While You Decide)</h3>
+        <div class="sos-tools">
+          <div class="sos-tool-card"><h4>60-second breathing</h4><p>Breathe in 4, hold 4, out 8. Repeat gently.</p></div>
+          <div class="sos-tool-card"><h4>5-4-3-2-1 Grounding</h4><p>Name 5 things you can see, 4 you can touch, 3 hear, 2 smell, 1 taste.</p></div>
+          <div class="sos-tool-card"><h4>Comfort statements</h4><p>“This feeling will pass.” “I can ask for help.”</p></div>
+        </div>
+      </section>
+      <section class="sos-section">
+        <h3>Important Note</h3>
+        <p class="sos-note">BloomSpace is not a crisis service and does not replace professional care.</p>
+      </section>
+      <footer class="sos-footer"><button class="sos-close-main" type="button">I’m okay for now, close this</button></footer>
+    </div>
+  </div>
+
+  <script src="/static/website.js" defer></script>
+</body>
+</html>

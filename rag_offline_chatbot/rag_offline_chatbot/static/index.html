@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Offline RAG Mental Health Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>RAG-Based Offline Mental Health Chatbot</h1>
+    <div id="chat" class="chatbox" aria-live="polite"></div>
+
+    <div class="controls">
+      <textarea id="msg" placeholder="How are you feeling today?"></textarea>
+      <div class="right">
+        <button id="mic" title="Speak (uses browser microphone)">🎤</button>
+        <button id="send">Send</button>
+      </div>
+    </div>
+
+    <p class="note">Runs offline. Uses local knowledge base and local LLM (Ollama) if installed. Browser TTS used for voice output.</p>
+  </div>
+<script src="/static/app.js"></script>
+</body>
+</html>
