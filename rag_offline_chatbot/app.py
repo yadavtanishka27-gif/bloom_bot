@@ -24,7 +24,7 @@ app.secret_key = "CHANGE_ME_TO_SOMETHING_RANDOM_AND_SECRET"  # CHANGE IN PROD
 conversation_memory = deque(maxlen=5)
 
 # --- User database (SQLite) config ---
-USER_DB = ROOT / "/tmp/users.db"
+USER_DB = "/tmp/users.db"
 
 
 # ----------------- AUTH DECORATOR -----------------
